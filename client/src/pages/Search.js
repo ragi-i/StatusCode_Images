@@ -38,7 +38,7 @@ const SearchPage = () => {
     };
 
     try {
-      await axios.post('http://localhost:8000/addresponsecode', imageData);
+      await axios.post('https://statuscode-image.onrender.com/addresponsecode', imageData);
       alert('Image saved successfully.');
     } catch (error) {
       console.error('Error saving image:', error);

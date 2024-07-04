@@ -12,7 +12,7 @@ const SavedResponseCode = () => {
   useEffect(() => {
     const fetchSavedImages = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/getsavedlist', {
+        const response = await axios.get('https://statuscode-image.onrender.com/getsavedlist', {
           params: { userId }
         });
         setSavedImages(response.data);
@@ -29,7 +29,7 @@ const SavedResponseCode = () => {
   const handleDelete = async (imageId) => {
     try {
       console.log('ImageID:', imageId)
-      await axios.delete(`http://localhost:8000/deletesavedimage`, {
+      await axios.delete(`https://statuscode-image.onrender.com/deletesavedimage`, {
         params: { imageId }  
       });
       setSavedImages(savedImages.filter(image => image._id !== imageId));
@@ -48,7 +48,7 @@ const SavedResponseCode = () => {
   const handleSaveEdit = async (imageId) => {
     try {
       console.log(imageId);
-      await axios.put(`http://localhost:8000/updatename`, {
+      await axios.put(`https://statuscode-image.onrender.com/updatename`, {
         imageId,
         newName
       });
