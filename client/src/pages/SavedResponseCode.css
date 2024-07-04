@@ -1,0 +1,64 @@
+.saved-container {
+  background-image: url('https://www.shutterstock.com/shutterstock/photos/2200597295/display_1500/stock-photo-business-process-and-workflow-automation-with-flowchart-hand-holding-wooden-cog-flowing-process-2200597295.jpg');
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  
+  .saved-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+   
+  }
+  
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 5px solid #a84242;;
+    padding: 10px;
+    border-radius: 8px;
+    border: '1px solid #ccc',
+  }
+  
+  .image-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+ 
+
+  .saved-image {
+    width: 100%; 
+    height: auto; 
+    max-width: 100%; 
+    max-height: 300px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+  }
+  
+  .image-buttons {
+    margin-top: 10px;
+  }
+  
+  .delete-button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+
+  

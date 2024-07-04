@@ -1,0 +1,18 @@
+.filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .filter-container input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .filter-container button {
+    padding: 5px 10px;
+  }
+  
+  .notification {
+    color: red;
+    margin-top: 10px;
+  }
+  
