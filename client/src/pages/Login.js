@@ -7,7 +7,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {  
     e.preventDefault();
     try {
       const response = await axios.post('https://statuscode-image.onrender.com/login', formData, {
@@ -118,6 +118,8 @@ const styles = {
     fontSize: '16px',
     cursor: 'pointer',
   },
+ 
+
   error: {
     color: 'red',
     marginBottom: '10px',

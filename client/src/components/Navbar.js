@@ -41,8 +41,8 @@ const styles = {
     alignItems: 'center',
   },
   userIcon: {
-    width: '40px',
-    height: '40px',
+    width: '90px',
+    height: '90px',
     borderRadius: '50%',
     marginRight: '10px',
   },

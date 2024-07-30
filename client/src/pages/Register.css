@@ -61,4 +61,9 @@ body, html {
   .login-link a:hover {
     text-decoration: underline;
   }
+
+  .error-message{
+    color:crimson;
+    font-size: 0.9em;
+  }
   
