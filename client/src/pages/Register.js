@@ -102,7 +102,7 @@ const Register = () => {
             type="text"
             name="fullname"
             id="fullname"
-            placeholder="Full Name"
+            placeholder="Enter Your Full Name"
             value={formData.fullname}
             onChange={handleChange}
             required
@@ -114,7 +114,7 @@ const Register = () => {
             type="email"
             name="email"
             id="email"
-            placeholder="Email"
+            placeholder="Enter Your Email"
             value={formData.email}
             onChange={handleChange}
             required
@@ -126,7 +126,7 @@ const Register = () => {
             type="password"
             name="password"
             id="password"
-            placeholder="Password"
+            placeholder="Enter Your Password"
             value={formData.password}
             onChange={handleChange}
             required

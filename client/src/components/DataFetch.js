@@ -37,14 +37,15 @@ const DataFetchComponent = ({ setAllData }) => {
   }, [setAllData]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Please Wait.
+       Data is Loading...</p>;
   }
 
   if (error) {
     return <p>{error}</p>;
   }
 
-  return <p>Data fetched successfully.</p>;
+  return <p>Data Fetched Successfully !! Search For HTTP Status Code</p>;
 };
 
 export default DataFetchComponent;
