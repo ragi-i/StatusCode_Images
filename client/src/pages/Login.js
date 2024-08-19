@@ -39,7 +39,7 @@ const Login = () => {
     <div style={styles.background}>
       {/* <h1 style={styles.appTitle}>Status Code App</h1> */}
       <div style={styles.loginBox}>
-        <h2 style={styles.title}>Login</h2>
+        <h2 style={styles.title}>User Login</h2>
         <form onSubmit={handleSubmit} style={styles.form}>
           <label style={styles.label} htmlFor="email">Email</label>
           <input
