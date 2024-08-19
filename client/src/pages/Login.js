@@ -83,6 +83,7 @@ const styles = {
   },
   loginBox: {
     width: '500px',
+    marginLeft:'200px',
     padding: '30px',
     borderRadius: '15px',
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
