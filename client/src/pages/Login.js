@@ -82,7 +82,7 @@ const styles = {
     backgroundRepeat: 'no-repeat',
   },
   loginBox: {
-    width: '500px',
+    width: '400px',
     marginLeft:'200px',
     padding: '30px',
     borderRadius: '15px',
