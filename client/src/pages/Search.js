@@ -40,6 +40,12 @@ const SearchPage = () => {
     try {
       await axios.post('https://statuscode-image.onrender.com/addresponsecode', imageData);
       alert('Image saved successfully.');
+      
+      // Clear the image name input after saving
+      setImageNames((prevImageNames) => ({
+        ...prevImageNames,
+        [index]: ''
+      }));
     } catch (error) {
       console.error('Error saving image:', error);
       alert('Failed to save image.');
@@ -74,4 +80,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage; 
+export default SearchPage;

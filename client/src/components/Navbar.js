@@ -16,7 +16,7 @@ const Navbar = () => {
         </div>
       </div>
       <div style={styles.rightSection}>
-        <Link to="/SavedList" style={styles.link}>Saved List</Link>
+        <Link to="/SavedList" style={styles.link}>My HTTP Status Code List</Link>
         <div style={styles.underline}></div>
       </div>
     </nav>
@@ -41,8 +41,8 @@ const styles = {
     alignItems: 'center',
   },
   userIcon: {
-    width: '40px',
-    height: '40px',
+    width: '90px',
+    height: '90px',
     borderRadius: '50%',
     marginRight: '10px',
   },
