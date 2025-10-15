@@ -4,14 +4,16 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Search from './pages/Search';
 import SavedResponseCode from './pages/SavedResponseCode';
+import UserDashboard from './pages/UserDashboard';
 
 function App() {
   return (
       <Routes>
         <Route path ='/userlogin' element={ <Login/> } />
         <Route path ='/userregister' element={ <Register/>} />
-        <Route path ='/' element={ <Login/> } />
-        <Route path ='/searchresponsecode' element ={ <Search/> }/>
+        <Route path ='/' element={ <UserDashboard/> } />
+        {/* <Route path ='/searchresponsecode' element ={ <Search/> }/> */}
+          <Route path ='/searchresponsecode' element ={ <UserDashboard/> }/>
         <Route path ='/SavedList' element={ <SavedResponseCode/>} />
       </Routes>
   );

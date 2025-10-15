@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DataFetchComponent from '../components/DataFetch';
 import FilterComponent from '../components/Filter';
 import Navbar from '../components/Navbar';
@@ -12,6 +12,13 @@ const SearchPage = () => {
 
   const user = JSON.parse(localStorage.getItem('profile'));
   console.log('profile', user);
+
+  // ✅ Whenever allData changes, set it as filteredData initially
+  useEffect(() => {
+    if (allData.length > 0) {
+      setFilteredData(allData);
+    }
+  }, [allData]);
 
   const handleInputChange = (index, value) => {
     setImageNames({
@@ -41,7 +48,6 @@ const SearchPage = () => {
       await axios.post('https://statuscode-image.onrender.com/addresponsecode', imageData);
       alert('Image saved successfully.');
       
-      // Clear the image name input after saving
       setImageNames((prevImageNames) => ({
         ...prevImageNames,
         [index]: ''
