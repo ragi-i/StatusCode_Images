@@ -23,7 +23,7 @@ Simple app to search, view, and save HTTP status codes.
   </tr>
   <tr>
     <td align="center">
-      <img src="./screenshot/http_code_4xx.png" alt="HTTP 4xx" width="300"><br/>
+      <img src="./screenshot/http_code_4xx_.png" alt="HTTP 4xx" width="300"><br/>
       <sub>HTTP 4xx (Client Errors)</sub>
     </td>
     <td align="center">
