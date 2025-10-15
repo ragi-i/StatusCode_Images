@@ -2,9 +2,6 @@
 
 Simple app to search, view, and save HTTP status codes.
 
-## Quick start
-- Server: `cd server && npm install && npm start`
-- Client: `cd client && npm install && npm start`
 
 ## Screenshots
 <div align="center">
@@ -16,8 +13,8 @@ Simple app to search, view, and save HTTP status codes.
       <sub>HTTP 1xx (Informational)</sub>
     </td>
     <td align="center">
-      <img src="./screenshot/http_code_2xx.png" alt="HTTP 2xx" width="300"><br/>
-      <sub>HTTP 2xx (Success)</sub>
+       <img src="./screenshot/http_code_9xx.png" alt="HTTP 9xx" width="300"><br/>
+      <sub>HTTP 9xx (Custom)</sub>
     </td>
     <td align="center">
       <img src="./screenshot/http_code_3xx.png" alt="HTTP 3xx" width="300"><br/>
@@ -34,10 +31,14 @@ Simple app to search, view, and save HTTP status codes.
       <sub>HTTP 5xx (Server Errors)</sub>
     </td>
     <td align="center">
-      <img src="./screenshot/http_code_9xx.png" alt="HTTP 9xx" width="300"><br/>
-      <sub>HTTP 9xx (Custom)</sub>
+      <img src="./screenshot/http_code_2xx.png" alt="HTTP 2xx" width="300"><br/>
+      <sub>HTTP 2xx (Success)</sub>
     </td>
   </tr>
 </table>
 
 </div>
+
+## Quick start
+- Server: `cd server && npm install && npm start`
+- Client: `cd client && npm install && npm start`
