@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import ReactGA from "react-ga4";
+
 
 // Helper: Preload an image using the browser Image API to avoid CORS issues
 const preloadImage = (url) =>
@@ -113,6 +115,12 @@ const UserDashboard = () => {
   const handleSearchChange = (e) => {
     const onlyDigits = e.target.value.replace(/\D/g, '');
     setQuery(onlyDigits);
+      // 🔹 Google Analytics Event
+  ReactGA.event({
+    category: "Search",
+    action: "Search HTTP Code",
+    label: onlyDigits || "empty",
+  });
   };
 
   // Optional category chips
@@ -173,7 +181,13 @@ const UserDashboard = () => {
               <button
                 key={c.key}
                 className={`ud-chip ${chip === c.key ? 'ud-chip-active' : ''}`}
-                onClick={() => setChip(c.key)}
+                onClick={() =>{setChip(c.key)
+              ReactGA.event({
+                category: "Filter",
+                 action: "Filter by Category",
+                label: c.key,
+                   });
+                }}
                 aria-pressed={chip === c.key}
               >
                 {c.label}
@@ -224,7 +238,13 @@ const UserDashboard = () => {
                     </div>
                     <div className="ud-card-meta">
                       <div className="ud-meta-actions">
-                        <button className="ud-btn ud-btn-ghost" onClick={() => navigator.clipboard.writeText(url)}>
+                        <button className="ud-btn ud-btn-ghost" onClick={() =>{navigator.clipboard.writeText(url)
+                           ReactGA.event({
+                       category: "Interaction",
+                       action: "Copy Image URL",
+                           label: String(code),
+                          });
+                        }}>
                           <span className="ud-btn-ico" aria-hidden="true">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path d="M9 3h6a2 2 0 012 2v1h1a2 2 0 012 2v11a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2h1V5a2 2 0 012-2zm0 3h6V5H9v1z"/>
@@ -232,7 +252,14 @@ const UserDashboard = () => {
                           </span>
                           Copy URL
                         </button>
-                        <a className="ud-btn ud-btn-primary ud-link" href={url} target="_blank" rel="noreferrer">
+                        <a className="ud-btn ud-btn-primary ud-link" href={url} target="_blank" rel="noreferrer"
+                          onClick={() => {
+                         ReactGA.event({
+                      category: "Interaction",
+                      action: "Open Image",
+                      label: String(code),
+                          });
+                             }}>
                           <span className="ud-btn-ico" aria-hidden="true">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path d="M14 3h7v7h-2V6.41l-7.29 7.3-1.42-1.42 7.3-7.29H14V3z"/>
@@ -260,9 +287,44 @@ const UserDashboard = () => {
 
       <footer className="ud-footer">
         <div className="ud-footer-inner">
-          <span>HTTP Status Gallery — A lightweight visual explorer for HTTP codes.</span>
-          <span>Images by <a href="https://http.dog" target="_blank" rel="noreferrer">http.dog</a></span>
-          <span>Made with ❤️ by Ragnee</span>
+          <div className="ud-footer-left">
+            <div className="ud-footer-copy">
+              <span>HTTP Status Gallery — A lightweight visual explorer for HTTP codes.</span>
+              <span className="ud-sep" aria-hidden="true">•</span>
+              <span>Images by <a href="https://http.dog" target="_blank" rel="noreferrer">http.dog</a></span>
+              <span className="ud-sep" aria-hidden="true">•</span>
+              <span>Made with ❤️ by Ragnee</span>
+            </div>
+          </div>
+          <div className="ud-footer-right">
+            <div className="ud-contact-card" role="contentinfo" aria-label="Contact details">
+              <div className="ud-contact-header">Connect with me</div>
+              <div className="ud-contact-row">
+                <div className="ud-contact-logo ud-logo-email" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4a2 2 0 00-2 2v.2l10 6.3 10-6.3V8a2 2 0 00-2-2zm0 4.4l-8 5-8-5V18a2 2 0 002 2h12a2 2 0 002-2v-7.6z"/></svg>
+                </div>
+                <div className="ud-contact-label">Email</div>
+                <div className="ud-contact-value">ragneekumari.dev@gmail.com</div>
+                <div className="ud-contact-actions-line">
+                  <button className="ud-contact-icon" title="Copy email" onClick={() => navigator.clipboard.writeText('ragneekumari.dev@gmail.com')} aria-label="Copy email">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H4a2 2 0 00-2 2v12h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div className="ud-contact-row">
+                <div className="ud-contact-logo ud-logo-linkedin" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v15H0V8zm7.5 0H12v2.1h.06c.63-1.2 2.17-2.46 4.47-2.46C21.4 7.64 24 10 24 14.3V23H19v-7.5c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 4v7.62H7.5V8z"/></svg>
+                </div>
+                <div className="ud-contact-label">LinkedIn</div>
+                <div className="ud-contact-value">linkedin.com/in/ragnee-kumari</div>
+                <div className="ud-contact-actions-line">
+                  <button className="ud-contact-icon" title="Copy LinkedIn URL" onClick={() => navigator.clipboard.writeText('https://www.linkedin.com/in/ragnee-kumari')} aria-label="Copy LinkedIn URL">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H4a2 2 0 00-2 2v12h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
 
@@ -374,9 +436,36 @@ const UserDashboard = () => {
         .ud-meta-left { color: var(--text-dim); }
 
         /* Footer */
-        .ud-footer { border-top: 1px solid var(--stroke); background: rgba(255,255,255,.04); }
-        .ud-footer-inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display: flex; justify-content: space-between; gap: 8px; color: var(--text-dim); flex-wrap: wrap; }
-        .ud-footer-inner a { color: var(--text); text-decoration: underline; }
+        .ud-footer { border-top: 1px solid var(--stroke); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); }
+        .ud-footer-inner { max-width: 1200px; margin: 0 auto; padding: 18px 10px 18px 20px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; color: var(--text-dim); }
+        .ud-footer-left { display: flex; flex-direction: column; gap: 6px; }
+        .ud-footer-right { display: flex; flex-direction: column; align-items: flex-end; justify-self: end; margin-right: -10px; }
+        .ud-footer-copy { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+        .ud-footer-inner a { color: var(--text); text-decoration: none; }
+        .ud-sep { opacity: .45; }
+
+        /* Contact card */
+        .ud-contact-card { min-width: 300px; max-width: 380px; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; background: linear-gradient(180deg, rgba(147,197,253,.12), rgba(249,168,212,.10)); padding: 14px; box-shadow: 0 14px 40px rgba(0,0,0,.32), 0 0 0 4px rgba(147,197,253,.06) inset; backdrop-filter: blur(6px); }
+        .ud-contact-header { font-weight: 900; letter-spacing: .3px; color: var(--text); margin-bottom: 10px; font-size: 13px; text-align: center; }
+        .ud-contact-row { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px dashed rgba(255,255,255,.12); }
+        .ud-contact-row:first-of-type { border-top: none; }
+        .ud-contact-label { font-weight: 800; font-size: 12px; color: var(--text); opacity: .95; }
+        .ud-contact-value { font-weight: 600; color: var(--text-dim); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .ud-contact-actions-line { display: inline-flex; align-items: center; gap: 6px; }
+        .ud-contact-icon { appearance: none; border: 1px solid var(--stroke); background: rgba(255,255,255,.05); color: var(--text); width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+        .ud-contact-icon:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.08); }
+        .ud-contact-icon:active { transform: translateY(0); }
+        .ud-contact-icon svg { opacity: .95; }
+        .ud-contact-logo { width: 28px; height: 28px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.25); flex-shrink: 0; }
+        .ud-logo-email { background: linear-gradient(135deg, #38bdf8, #60a5fa); }
+        .ud-logo-linkedin { background: #0A66C2; }
+        .ud-contact-logo svg { display: block; }
+
+        @media (max-width: 640px) {
+          .ud-footer-inner { grid-template-columns: 1fr; }
+          .ud-footer-right { align-items: stretch; margin-right: 0; }
+          .ud-contact-header { text-align: left; }
+        }
 
         /* Grid empty full-span */
         .ud-grid > .ud-empty { grid-column: 1 / -1; }
