@@ -22,14 +22,14 @@ const preloadImage = (url) =>
   });
 
 // Map HTTP code to a category with colors and label
-const codeCategory = (code) => {
-  if (code >= 100 && code < 200) return { label: 'Informational', color: '#38bdf8' };
-  if (code >= 200 && code < 300) return { label: 'Success', color: '#22c55e' };
-  if (code >= 300 && code < 400) return { label: 'Redirection', color: '#f59e0b' };
-  if (code >= 400 && code < 500) return { label: 'Client Error', color: '#ef4444' };
-  if (code >= 500 && code < 600) return { label: 'Server Error', color: '#a78bfa' };
-  return { label: 'Unknown', color: '#94a3b8' };
-};
+// const codeCategory = (code) => {
+//   if (code >= 100 && code < 200) return { label: 'Informational', color: '#38bdf8' };
+//   if (code >= 200 && code < 300) return { label: 'Success', color: '#22c55e' };
+//   if (code >= 300 && code < 400) return { label: 'Redirection', color: '#f59e0b' };
+//   if (code >= 400 && code < 500) return { label: 'Client Error', color: '#ef4444' };
+//   if (code >= 500 && code < 600) return { label: 'Server Error', color: '#a78bfa' };
+//   return { label: 'Unknown', color: '#94a3b8' };
+// };
 
 // Whitelist of available HTTP status images
 const ALLOWED_CODES = [
@@ -147,7 +147,7 @@ const UserDashboard = () => {
     return list.filter((x) => String(x.code).startsWith(query));
   }, [allImages, query, chip]);
 
-  const showEmptyState = !loading && query && filtered.length === 0;
+  // const showEmptyState = !loading && query && filtered.length === 0;
 
   return (
     <div className="ud-root">
@@ -230,7 +230,7 @@ const UserDashboard = () => {
           ) : (
             filtered.length > 0 ? (
               filtered.map(({ code, url }) => {
-                const cat = codeCategory(code);
+                // const cat = codeCategory(code);
                 return (
                   <div key={code} className="ud-grid-item ud-card">
                     <div className="ud-card-image-wrap">
