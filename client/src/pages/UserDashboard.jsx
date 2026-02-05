@@ -318,7 +318,7 @@ const UserDashboard = () => {
                 <div className="ud-contact-label">LinkedIn</div>
                 <div className="ud-contact-value">linkedin.com/in/ragnee-kumari</div>
                 <div className="ud-contact-actions-line">
-                  <button className="ud-contact-icon" title="Copy LinkedIn URL" onClick={() => navigator.clipboard.writeText('https://www.linkedin.com/in/ragnee-kumari')} aria-label="Copy LinkedIn URL">
+                  <button className="ud-contact-icon" title="Copy LinkedIn URL" onClick={() => navigator.clipboard.writeText('https://www.linkedin.com/in/ragnee-kumari-12bb21223/')} aria-label="Copy LinkedIn URL">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H4a2 2 0 00-2 2v12h2V3h12V1zm3 4H8a2 2 0 00-2 2v14a2 2 0 002 2h11a2 2 0 002-2V7a2 2 0 00-2-2zm0 16H8V7h11v14z"/></svg>
                   </button>
                 </div>
